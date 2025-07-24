@@ -64,11 +64,14 @@ const NewCard = () => {
 						</div>
 					</div>
 				</div>
+
 				<div
-					className='bg-no-repeat w-[447px] h-[245px]'
+					className='bg-no-repeat w-[447px] h-[245px] relative'
 					style={{ backgroundImage: `url(${bgCardBack})` }}
 				>
-					<span>{cvv === null ? '000' : cvv}</span>
+					<span className=' block absolute top-[43.5%] right-14 text-white'>
+						{cvv === null ? '000' : cvv}
+					</span>
 				</div>
 			</div>
 			<div>
