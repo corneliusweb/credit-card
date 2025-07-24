@@ -31,7 +31,7 @@ const NewCard = () => {
 		if (!month) {
 			return '00';
 		}
-		return month > 10 ? month : '0' + month; // 🍻 here's to taking advantage of js loose type
+		return month > 10 ? month : '0' + month; // 🍻 here's to taking advantage of JS loose type
 	};
 
 	const formattedYear = (year) => {
@@ -42,14 +42,22 @@ const NewCard = () => {
 		<main className='h-screen'>
 			<div>
 				<div
-					className='h-70 bg-no-repeat'
+					className='bg-no-repeat w-[447px] h-[245px] p-6 flex flex-col justify-between items-start'
 					style={{ backgroundImage: `url(${bgCardFront})` }}
 				>
 					<img src={cardLogo} alt='card logo' />
-					<div>
-						<p>{formattedCardNumber(cardNumber)}</p>
-						<div className='flex gap-2'>
-							<span>{cardHolderName}</span>
+
+					<div className='flex flex-col justify-between gap-6 overflow-hidden w-full'>
+						<p className='text-[var(--white-color)] text-3xl tracking-widest w-full'>
+							{!cardNumber
+								? '0000 0000 0000 0000'
+								: formattedCardNumber(cardNumber)}
+						</p>
+
+						<div className='flex justify-between text-gray-200 w-full'>
+							<span className='uppercase tracking-wide'>
+								{!cardHolderName ? 'Jane Appleseed' : cardHolderName}
+							</span>
 							<span>{`${formattedMonth(expiryMonth)}/${formattedYear(
 								expiryYear
 							)}`}</span>
@@ -57,7 +65,7 @@ const NewCard = () => {
 					</div>
 				</div>
 				<div
-					className='h-70 bg-no-repeat'
+					className='bg-no-repeat w-[447px] h-[245px]'
 					style={{ backgroundImage: `url(${bgCardBack})` }}
 				>
 					<span>{cvv === null ? '000' : cvv}</span>
