@@ -50,10 +50,9 @@ const NewCard = () => {
 						<p>{formattedCardNumber(cardNumber)}</p>
 						<div className='flex gap-2'>
 							<span>{cardHolderName}</span>
-							<div>
-								<span>{formattedMonth(expiryMonth)}</span>/
-								<span>{formattedYear(expiryYear)}</span>
-							</div>
+							<span>{`${formattedMonth(expiryMonth)}/${formattedYear(
+								expiryYear
+							)}`}</span>
 						</div>
 					</div>
 				</div>
