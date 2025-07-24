@@ -1,1 +1,22 @@
-@import 'tailwindcss'
+@import 'tailwindcss';
+
+@font-face {
+	font-family: 'SpaceGrotesk';
+	src: url('./assets/fonts/SpaceGrotesk-Medium.woff2'),
+		url('./assets/fonts/SpaceGrotesk-Medium.woff');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+:root {
+   --white-color: hsl(0, 100%, 100%);
+   --purple-color: hsl(278, 68%, 11%)
+}
+
+@layer base {
+	body {
+		font-family: SpaceGrotesk, sans-serif;
+      font-size: 18px;
+	}
+}
