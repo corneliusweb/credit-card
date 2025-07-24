@@ -1,3 +1,5 @@
+import Button from "./Button";
+
 const NewCardForm = ({
 	cardStates: {
 		setCardHolderName,
@@ -55,7 +57,7 @@ const NewCardForm = ({
 						onChange={(e) => setCvv(e.target.valueAsNumber)}
 					/>
 				</div>
-				<button type='submit'>Confirm</button>
+				<Button type={'submit'} label={'Confirm'} />
 			</form>
 		</div>
 	);
