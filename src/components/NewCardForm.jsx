@@ -27,7 +27,7 @@ const NewCardForm = ({
 						name='card-number'
 						placeholder='e.g 1234 5678 9123 0000'
 						required
-						onChange={(e) => setCardNumber(e.target.value)}
+						onChange={(e) => setCardNumber(e.target.valueAsNumber)}
 					/>
 				</label>
 				<div>
@@ -37,14 +37,14 @@ const NewCardForm = ({
 							name='expiry-month'
 							placeholder='MM'
 							required
-							onChange={(e) => setExpiryMonth(e.target.value)}
+							onChange={(e) => setExpiryMonth(e.target.valueAsNumber)}
 						/>
 						<input
 							type='number'
 							name='expiry-year'
 							placeholder='YY'
 							required
-							onChange={(e) => setExpiryYear(e.target.value)}
+							onChange={(e) => setExpiryYear(e.target.valueAsNumber)}
 						/>
 					</fieldset>
 					<input
@@ -52,7 +52,7 @@ const NewCardForm = ({
 						name='cvv'
 						placeholder='e.g 123'
 						required
-						onChange={(e) => setCvv(e.target.value)}
+						onChange={(e) => setCvv(e.target.valueAsNumber)}
 					/>
 				</div>
 				<button type='submit'>Confirm</button>

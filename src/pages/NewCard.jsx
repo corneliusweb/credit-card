@@ -14,25 +14,28 @@ const NewCard = () => {
 	const [cardNumber, setCardNumber] = useState(0);
 	const [expiryMonth, setExpiryMonth] = useState(0);
 	const [expiryYear, setExpiryYear] = useState(0);
-	const [cvv, setCvv] = useState(0);
+	const [cvv, setCvv] = useState(null);
 
-	// console.log(
-	// 	`name: ${cardHolderName}\nnumber: ${cardNumber}\nmonth: ${expiryMonth}\nyear: ${expiryYear}\ncvv: ${cvv}\n`
-	// );
+	const formattedCardNumber = (number) => {
+		if (!number) return;
+
+		const str = String(number);
+		const formatted = str
+			.replace(/\s/g, '')
+			.match(/.{1,4}/g)
+			.join(' ');
+		return formatted;
+	};
 
 	const formattedMonth = (month) => {
-		const number = Number.parseInt(month);
-		if (!number) {
+		if (!month) {
 			return '00';
 		}
-		return number > 10 ? number : '0' + number; // 🍻 here's to taking advantage of js loose type
-		
+		return month > 10 ? month : '0' + month; // 🍻 here's to taking advantage of js loose type
 	};
 
 	const formattedYear = (year) => {
-		const number = Number.parseInt(year);
-
-		return !number ? '00' : number;
+		return !year ? '00' : year;
 	};
 
 	return (
@@ -44,7 +47,7 @@ const NewCard = () => {
 				>
 					<img src={cardLogo} alt='card logo' />
 					<div>
-						<p>0000 1111 2222 3333 4444</p>
+						<p>{formattedCardNumber(cardNumber)}</p>
 						<div className='flex gap-2'>
 							<span>{cardHolderName}</span>
 							<div>
@@ -57,7 +60,9 @@ const NewCard = () => {
 				<div
 					className='h-70 bg-no-repeat'
 					style={{ backgroundImage: `url(${bgCardBack})` }}
-				></div>
+				>
+					<span>{cvv === null ? '000' : cvv}</span>
+				</div>
 			</div>
 			<div>
 				<NewCardForm
