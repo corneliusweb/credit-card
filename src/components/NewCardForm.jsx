@@ -1,4 +1,4 @@
-import Button from "./Button";
+import Button from './Button';
 
 const NewCardForm = ({
 	cardStates: {
@@ -10,56 +10,66 @@ const NewCardForm = ({
 	},
 }) => {
 	return (
-		<div>
-			<form>
-				<label>
-					Card Holder Name
-					<input
-						type='text'
-						name='fullname'
-						placeholder='e.g Cornelius Asogwa'
-						required
-						onChange={(e) => setCardHolderName(e.target.value)}
-					/>
-				</label>
-				<label>
-					Card Number
+		<form className='p-4 max-w-[500px]'>
+			<label className='label-style'>
+				Card Holder Name
+				<input
+					type='text'
+					name='fullname'
+					placeholder='e.g Jane Appleseed'
+					required
+					onChange={(e) => setCardHolderName(e.target.value)}
+					className='input-style'
+				/>
+			</label>
+			<label className='label-style'>
+				Card Number
+				<input
+					type='number'
+					name='card-number'
+					placeholder='e.g 1234 5678 9123 0000'
+					required
+					onChange={(e) => setCardNumber(e.target.valueAsNumber)}
+					className='input-style'
+				/>
+			</label>
+			<div className='flex justify-between mb-8 gap-4'>
+				<fieldset className='flex gap-2 w-1/2'>
+					<legend className='uppercase text-sm font-semibold tracking-wider'>
+						Exp. Date (MM / YY)
+					</legend>
 					<input
 						type='number'
-						name='card-number'
-						placeholder='e.g 1234 5678 9123 0000'
+						name='expiry-month'
+						placeholder='MM'
 						required
-						onChange={(e) => setCardNumber(e.target.valueAsNumber)}
+						onChange={(e) => setExpiryMonth(e.target.valueAsNumber)}
+						className='flex-input-style'
 					/>
-				</label>
-				<div>
-					<fieldset>
-						<input
-							type='number'
-							name='expiry-month'
-							placeholder='MM'
-							required
-							onChange={(e) => setExpiryMonth(e.target.valueAsNumber)}
-						/>
-						<input
-							type='number'
-							name='expiry-year'
-							placeholder='YY'
-							required
-							onChange={(e) => setExpiryYear(e.target.valueAsNumber)}
-						/>
-					</fieldset>
+					<input
+						type='number'
+						name='expiry-year'
+						placeholder='YY'
+						required
+						onChange={(e) => setExpiryYear(e.target.valueAsNumber)}
+						className='flex-input-style'
+					/>
+				</fieldset>
+
+				<label className='label-style mb-0 grow'>
+					Cvv
 					<input
 						type='number'
 						name='cvv'
 						placeholder='e.g 123'
 						required
 						onChange={(e) => setCvv(e.target.valueAsNumber)}
+						className='flex-input-style block py-2 w-full'
 					/>
-				</div>
-				<Button type={'submit'} label={'Confirm'} />
-			</form>
-		</div>
+				</label>
+			</div>
+			<Button type={'submit'} label={'Confirm'} />
+		</form>
 	);
 };
 export default NewCardForm;

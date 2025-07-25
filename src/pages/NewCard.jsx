@@ -3,10 +3,10 @@ import NewCardForm from '../components/NewCardForm';
 import {
 	bgCardBack,
 	bgCardFront,
-	// bgMainMobile,
-	// bgMainDesktop,
+	bgMainMobile,
+	bgMainDesktop,
 	cardLogo,
-	// iconComplete,
+	iconComplete,
 } from '../assets/images';
 
 const NewCard = () => {
@@ -39,8 +39,10 @@ const NewCard = () => {
 	};
 
 	return (
-		<main className='h-screen'>
-			<div>
+		<main className='flex'>
+			<div className='bg-no-repeat h-screen'
+				style={{backgroundImage: `url(${bgMainDesktop})`}}
+			>
 				<div
 					className='bg-no-repeat w-[447px] h-[245px] p-6 flex flex-col justify-between items-start'
 					style={{ backgroundImage: `url(${bgCardFront})` }}
@@ -74,7 +76,7 @@ const NewCard = () => {
 					</span>
 				</div>
 			</div>
-			<div>
+			<div className='h-screen grid place-items-center grow'>
 				<NewCardForm
 					cardStates={{
 						setCardHolderName,
