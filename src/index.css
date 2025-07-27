@@ -9,28 +9,31 @@
 	font-display: swap;
 }
 
-:root {
-   --white-color: hsl(0, 100%, 100%);
-   --purple-color: hsl(278, 68%, 11%)
+@theme {
+	--white-color: hsl(0, 100%, 100%);
+	--purple-color: hsl(278, 68%, 11%);
+
+	--bg-desktop: url('./assets/images/bg-main-desktop.png');
+	--bg-mobile: url('./assets/images/bg-main-mobile.png');
 }
 
 @layer base {
 	body {
 		font-family: SpaceGrotesk, sans-serif;
-      font-size: 18px;
+		font-size: 18px;
 	}
 }
 
 @layer components {
 	.input-style {
-		@apply rounded-sm border-2 border-gray-400 block w-full py-2 px-1.5 outline-0 mt-1 font-normal text-base
+		@apply rounded-sm border-2 border-gray-400 block w-full py-2 px-1.5 outline-0 mt-1 font-normal text-base;
 	}
 
 	.flex-input-style {
-		@apply rounded-sm border-2 border-gray-400  px-1.5 outline-0 mt-2 w-1/2 text-base font-normal
+		@apply rounded-sm border-2 border-gray-400  px-1.5 outline-0 mt-2 w-1/2 text-base font-normal;
 	}
 
 	.label-style {
-		@apply text-[var(--purple-color)] uppercase mb-7 font-semibold block text-sm tracking-widest 
+		@apply text-[color:var(--purple-color)] uppercase mb-7 font-semibold block text-sm tracking-widest;
 	}
 }
