@@ -10,8 +10,8 @@
 }
 
 @theme {
-	--white-color: hsl(0, 100%, 100%);
-	--purple-color: hsl(278, 68%, 11%);
+	--color-white: hsl(0, 100%, 100%);
+	--color-purple: hsl(278, 68%, 11%);
 
 	--bg-desktop: url('./assets/images/bg-main-desktop.png');
 	--bg-mobile: url('./assets/images/bg-main-mobile.png');
@@ -34,6 +34,6 @@
 	}
 
 	.label-style {
-		@apply text-[color:var(--purple-color)] uppercase mb-7 font-semibold block text-sm tracking-widest;
+		@apply text-purple uppercase mb-7 font-semibold block text-sm tracking-widest;
 	}
 }

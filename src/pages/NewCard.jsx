@@ -37,18 +37,18 @@ const NewCard = () => {
 	};
 
 	return (
-		<main className='grid xl:grid-cols-2'>
+		<main className='grid transition duration-1000 ease-in-out xl:grid-cols-2'>
 			<div
-				className={`bg-[image:var(--bg-mobile)] xl:bg-[image:var(--bg-desktop)] bg-no-repeat bg-cover xl:h-screen relative xl:w-[483px]`}
+				className={`bg-[image:var(--bg-mobile)] bg-no-repeat bg-cover  relative flex flex-col-reverse items-center h-80 xl:w-[483px] xl:h-screen xl:bg-[image:var(--bg-desktop)]`}
 			>
 					<div
-						className='bg-no-repeat w-[447px] h-[245px] p-6 flex flex-col justify-between items-start xl:absolute xl:-right-25 xl:top-40'
+						className='bg-no-repeat w-[447px] h-[245px] p-6 flex flex-col justify-between items-start absolute  left-1/2 top-[66%] z-10 transform -translate-x-[70%] xl:-right-25 xl:top-26 xl:-translate-x-0 xl:left-1/4'
 						style={{ backgroundImage: `url(${bgCardFront})` }}
 					>
 						<img src={cardLogo} alt='card logo' />
 
 						<div className='flex flex-col justify-between gap-6 overflow-hidden w-full'>
-							<p className='text-[var(--white-color)] text-3xl tracking-widest w-full'>
+							<p className='text-white text-3xl tracking-widest w-full'>
 								{!cardNumber
 									? '0000 0000 0000 0000'
 									: formattedCardNumber(cardNumber)}
@@ -65,7 +65,7 @@ const NewCard = () => {
 						</div>
 					</div>
 
-					<div className='xl:absolute xl:top-108 xl:-right-48'>
+					<div className='xl:absolute xl:top-93 xl:-right-40'>
 						<div
 							className='bg-no-repeat w-[447px] h-[245px] relative'
 							style={{ backgroundImage: `url(${bgCardBack})` }}
