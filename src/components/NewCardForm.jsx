@@ -10,7 +10,7 @@ const NewCardForm = ({
 	},
 }) => {
 	return (
-		<form className='p-4 max-w-[500px]'>
+		<form className='max-w-[480px] p-3 sm:p-0'>
 			<label className='label-style'>
 				Card Holder Name
 				<input
