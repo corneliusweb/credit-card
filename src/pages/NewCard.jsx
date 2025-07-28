@@ -38,6 +38,15 @@ const NewCard = () => {
 		return !year ? '00' : year;
 	};
 
+	const resetDisplay = () => {
+		setCardHolderName('');
+		setCardNumber('');
+		setExpiryMonth('');
+		setExpiryYear('');
+		setCvv(null);
+		setIsSuccessful(false)
+	};
+
 	return (
 		<main className='grid gap-22 pb-12 sm:gap-38 xl:gap-0 xl:grid-cols-2'>
 			<div
@@ -99,7 +108,7 @@ const NewCard = () => {
 				) : (
 					<SuccessMessage
 						icon={iconComplete}
-						setIsSuccessful={setIsSuccessful}
+						resetDisplay={resetDisplay}
 					/>
 				)}
 			</div>

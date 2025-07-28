@@ -11,17 +11,17 @@ const NewCardForm = ({
 	},
 }) => {
 	const handleMonthChange = (e) => {
-		let value = e.target.value;
+		let value = Number.parseInt(e.target.value);
 		// prevent user from typing invalid month
-		if (value < 1 && value !== '') value = 1;
+		if (value < 1 && value) value = 1;
 		if (value > 12) value = 12;
 
 		setExpiryMonth(value);
 	};
 
 	const handleYearChange = (e) => {
-		let value = e.target.value;
-		if (value < 1 && value !== '') value = 1;
+		let value = Number.parseInt(e.target.value);
+		if (value < 1 && value) value = 1;
 
 		setExpiryYear(value);
 	};

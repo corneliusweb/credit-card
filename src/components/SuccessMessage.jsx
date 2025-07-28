@@ -1,6 +1,6 @@
 import Button from './Button';
 
-const SuccessMessage = ({ icon, setIsSuccessful }) => {
+const SuccessMessage = ({ icon, resetDisplay }) => {
 	return (
 		<div className='text-center w-[360px] p-3 sm:p-0 grid gap-3'>
 			<img src={icon} alt='success icon' className='mx-auto mb-4' />
@@ -11,7 +11,7 @@ const SuccessMessage = ({ icon, setIsSuccessful }) => {
 			<Button
 				label={'Continue'}
 				type={'button'}
-				onClick={() => setIsSuccessful(false)}
+				onClick={() => resetDisplay()}
 			/>
 		</div>
 	);
