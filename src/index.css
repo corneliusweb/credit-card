@@ -34,6 +34,6 @@
 	}
 
 	.label-style {
-		@apply text-purple uppercase mb-7 font-semibold block text-sm tracking-widest;
+		@apply text-purple uppercase mb-5 font-semibold block text-sm tracking-widest;
 	}
 }
