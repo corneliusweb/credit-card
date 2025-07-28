@@ -53,7 +53,7 @@ const NewCard = () => {
 				className={`bg-[image:var(--bg-mobile)] bg-no-repeat bg-cover relative flex flex-col-reverse items-end pr-2 justify-center h-60 sm:pr-0 sm:h-70 sm:items-center xl:w-[483px] xl:h-screen xl:bg-[image:var(--bg-desktop)]`}
 			>
 				<div
-					className='bg-no-repeat bg-cover w-[280px] h-[154px] flex flex-col p-4 justify-between items-start absolute -right-30 top-[53.9%] sm:top-[55%] z-10 transform -translate-x-[70%] sm:py-6 sm:w-[380px] sm:h-[209px] sm:left-1/2 xl:p-6 xl:w-[447px] xl:h-[245px] xl:-right-25 xl:top-26 xl:-translate-x-0 xl:left-1/4'
+					className='bg-no-repeat bg-cover w-[280px] h-[154px] flex flex-col p-4 justify-between items-start absolute -right-30 top-[54%] z-10 transform -translate-x-[69%] sm:py-6 sm:w-[380px] sm:h-[209px] sm:left-[51%] xl:p-6 xl:w-[447px] xl:h-[245px] xl:-right-25 xl:top-26 xl:-translate-x-0 xl:left-1/4'
 					style={{ backgroundImage: `url(${bgCardFront})` }}
 				>
 					<img

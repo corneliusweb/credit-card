@@ -12,7 +12,9 @@
 @theme {
 	--color-white: hsl(0, 100%, 100%);
 	--color-purple: hsl(278, 68%, 11%);
-
+	--color-gray-400: hsl(212, 12%, 71%)
+	--color-gray-200: hsl(270, 3%, 87%)
+	--color-red: hsl(0, 100%, 66%);
 	--bg-desktop: url('./assets/images/bg-main-desktop.png');
 	--bg-mobile: url('./assets/images/bg-main-mobile.png');
 }
@@ -26,14 +28,18 @@
 
 @layer components {
 	.input-style {
-		@apply rounded-md border-2 border-gray-400 block w-full py-2 px-1.5 outline-0 mt-1 font-normal text-base;
+		@apply rounded-[calc(0.375rem-2px)] border-2 border-gray-200 block w-full h-full p-2 outline-0 font-normal text-base bg-white focus:border-0
 	}
 
 	.flex-input-style {
-		@apply rounded-md border-2 border-gray-400  px-1.5 outline-0 mt-2 w-1/2 text-base font-normal;
+		@apply rounded-[calc(0.375rem-2px)] border-2 p-2 border-gray-200 block outline-0 h-full w-full text-base font-normal bg-white focus:border-0;
 	}
 
 	.label-style {
 		@apply text-purple uppercase mb-5 font-semibold block text-sm tracking-widest;
+	}
+
+	.gradient-border {
+		@apply rounded-md p-[1px] transition-all duration-200 focus-within:bg-gradient-to-br focus-within:from-[hsl(249,99%,64%)] focus-within:to-[hsl(278,94%,30%)] mt-1;
 	}
 }
