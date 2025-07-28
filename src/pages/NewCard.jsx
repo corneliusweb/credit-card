@@ -88,7 +88,7 @@ const NewCard = () => {
 						style={{ backgroundImage: `url(${bgCardBack})` }}
 					>
 						<div className='absolute right-9 text-white text-base top-5/12 sm:top-[43.5%] sm:right-10 xl:right-14'>
-							{cvv === null ? '000' : cvv}
+							{!cvv ? '000' : cvv}
 						</div>
 					</div>
 				</div>

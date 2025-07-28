@@ -31,6 +31,12 @@ const NewCardForm = ({
 		setCardNumber(cardNumber);
 	};
 
+	const handleCvvChange = (e) => {
+		let value = Number.parseInt(e.target.value);
+		if (value < 1 && value) value = 1;
+		setCvv(value);
+	};
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setIsSuccessful(true);
@@ -99,7 +105,7 @@ const NewCardForm = ({
 						required
 						maxLength={3}
 						minLength={3}
-						onChange={(e) => setCvv(e.target.value)}
+						onChange={handleCvvChange}
 						className='flex-input-style block py-2 w-full'
 					/>
 				</label>
