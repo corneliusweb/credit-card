@@ -9,8 +9,33 @@ const NewCardForm = ({
 		setCvv,
 	},
 }) => {
+	const handleMonthChange = (e) => {
+		let value = e.target.value;
+		// prevent user from typing invalid month
+		if (value < 1 && value !== '') value = 1;
+		if (value > 12) value = 12;
+
+		setExpiryMonth(value);
+	};
+
+	const handleYearChange = (e) => {
+		let value = e.target.value;
+		if (value < 1 && value !== '') value = 1;
+
+		setExpiryYear(value);
+	};
+
+	const handleCardNumberChange = (e) => {
+		const cardNumber = Number.parseInt(e.target.value);
+		setCardNumber(cardNumber);
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+	};
+
 	return (
-		<form className='max-w-[480px] p-3 sm:p-0'>
+		<form onSubmit={handleSubmit} className='max-w-[480px] p-3 sm:p-0'>
 			<label className='label-style'>
 				Card Holder Name
 				<input
@@ -25,11 +50,12 @@ const NewCardForm = ({
 			<label className='label-style'>
 				Card Number
 				<input
-					type='number'
+					type='text'
 					name='card-number'
 					placeholder='e.g 1234 5678 9123 0000'
 					required
-					onChange={(e) => setCardNumber(e.target.valueAsNumber)}
+					maxLength={16}
+					onChange={handleCardNumberChange}
 					className='input-style'
 				/>
 			</label>
@@ -39,19 +65,21 @@ const NewCardForm = ({
 						Exp. Date (MM / YY)
 					</legend>
 					<input
-						type='number'
+						type='text'
 						name='expiry-month'
 						placeholder='MM'
 						required
-						onChange={(e) => setExpiryMonth(e.target.valueAsNumber)}
+						maxLength={2}
+						onChange={handleMonthChange}
 						className='flex-input-style'
 					/>
 					<input
-						type='number'
+						type='text'
 						name='expiry-year'
 						placeholder='YY'
 						required
-						onChange={(e) => setExpiryYear(e.target.valueAsNumber)}
+						maxLength={2}
+						onChange={handleYearChange}
 						className='flex-input-style'
 					/>
 				</fieldset>
@@ -59,11 +87,12 @@ const NewCardForm = ({
 				<label className='label-style mb-0 grow'>
 					Cvv
 					<input
-						type='number'
+						type='text'
 						name='cvv'
 						placeholder='e.g 123'
 						required
-						onChange={(e) => setCvv(e.target.valueAsNumber)}
+						maxLength={3}
+						onChange={(e) => setCvv(e.target.value)}
 						className='flex-input-style block py-2 w-full'
 					/>
 				</label>
