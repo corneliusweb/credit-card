@@ -7,6 +7,7 @@ const NewCardForm = ({
 		setExpiryMonth,
 		setExpiryYear,
 		setCvv,
+		setIsSuccessful,
 	},
 }) => {
 	const handleMonthChange = (e) => {
@@ -32,6 +33,7 @@ const NewCardForm = ({
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		setIsSuccessful(true);
 	};
 
 	return (
@@ -43,6 +45,7 @@ const NewCardForm = ({
 					name='fullname'
 					placeholder='e.g Jane Appleseed'
 					required
+					autoFocus={true}
 					onChange={(e) => setCardHolderName(e.target.value)}
 					className='input-style'
 				/>
@@ -55,6 +58,7 @@ const NewCardForm = ({
 					placeholder='e.g 1234 5678 9123 0000'
 					required
 					maxLength={16}
+					minLength={16}
 					onChange={handleCardNumberChange}
 					className='input-style'
 				/>
@@ -70,6 +74,7 @@ const NewCardForm = ({
 						placeholder='MM'
 						required
 						maxLength={2}
+						minLength={1}
 						onChange={handleMonthChange}
 						className='flex-input-style'
 					/>
@@ -79,6 +84,7 @@ const NewCardForm = ({
 						placeholder='YY'
 						required
 						maxLength={2}
+						minLength={2}
 						onChange={handleYearChange}
 						className='flex-input-style'
 					/>
@@ -92,6 +98,7 @@ const NewCardForm = ({
 						placeholder='e.g 123'
 						required
 						maxLength={3}
+						minLength={3}
 						onChange={(e) => setCvv(e.target.value)}
 						className='flex-input-style block py-2 w-full'
 					/>

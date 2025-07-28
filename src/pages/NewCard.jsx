@@ -14,7 +14,7 @@ const NewCard = () => {
 	const [expiryMonth, setExpiryMonth] = useState(0);
 	const [expiryYear, setExpiryYear] = useState(0);
 	const [cvv, setCvv] = useState(null);
-	const [isSuccessful, setIsSuccessful] = useState(true);
+	const [isSuccessful, setIsSuccessful] = useState(false);
 
 	const formattedCardNumber = (number) => {
 		if (!number) return;
@@ -64,9 +64,11 @@ const NewCard = () => {
 							<span className='uppercase'>
 								{!cardHolderName ? 'Jane Appleseed' : cardHolderName}
 							</span>
-							<span>{`${formattedMonth(expiryMonth)}/${formattedYear(
-								expiryYear
-							)}`}</span>
+							<span>
+								{`${formattedMonth(expiryMonth)}/${formattedYear(
+									expiryYear
+								)}`}
+							</span>
 						</div>
 					</div>
 				</div>
@@ -91,6 +93,7 @@ const NewCard = () => {
 							setExpiryMonth,
 							setExpiryYear,
 							setCvv,
+							setIsSuccessful,
 						}}
 					/>
 				) : (
