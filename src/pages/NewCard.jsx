@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import NewCardForm from '../components/NewCardForm';
+import SuccessMessage from '../components/SuccessMessage';
 import {
 	bgCardBack,
 	bgCardFront,
@@ -13,6 +14,7 @@ const NewCard = () => {
 	const [expiryMonth, setExpiryMonth] = useState(0);
 	const [expiryYear, setExpiryYear] = useState(0);
 	const [cvv, setCvv] = useState(null);
+	const [isSuccessful, setIsSuccessful] = useState(true);
 
 	const formattedCardNumber = (number) => {
 		if (!number) return;
@@ -81,15 +83,22 @@ const NewCard = () => {
 				</div>
 			</div>
 			<div className='flex items-center justify-center'>
-				<NewCardForm
-					cardStates={{
-						setCardHolderName,
-						setCardNumber,
-						setExpiryMonth,
-						setExpiryYear,
-						setCvv,
-					}}
-				/>
+				{!isSuccessful ? (
+					<NewCardForm
+						cardStates={{
+							setCardHolderName,
+							setCardNumber,
+							setExpiryMonth,
+							setExpiryYear,
+							setCvv,
+						}}
+					/>
+				) : (
+					<SuccessMessage
+						icon={iconComplete}
+						setIsSuccessful={setIsSuccessful}
+					/>
+				)}
 			</div>
 		</main>
 	);

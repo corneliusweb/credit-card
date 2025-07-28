@@ -26,11 +26,11 @@
 
 @layer components {
 	.input-style {
-		@apply rounded-sm border-2 border-gray-400 block w-full py-2 px-1.5 outline-0 mt-1 font-normal text-base;
+		@apply rounded-md border-2 border-gray-400 block w-full py-2 px-1.5 outline-0 mt-1 font-normal text-base;
 	}
 
 	.flex-input-style {
-		@apply rounded-sm border-2 border-gray-400  px-1.5 outline-0 mt-2 w-1/2 text-base font-normal;
+		@apply rounded-md border-2 border-gray-400  px-1.5 outline-0 mt-2 w-1/2 text-base font-normal;
 	}
 
 	.label-style {

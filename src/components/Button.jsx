@@ -1,8 +1,9 @@
-const Button = ({ type, label }) => {
+const Button = ({ type, label, onClick }) => {
 	return (
 		<button
 			type={type}
-			className='bg-purple text-white block w-full py-3 cursor-pointer tracking-wide rounded-sm'
+			onClick={onClick}
+			className='bg-purple text-white block w-full py-3 cursor-pointer tracking-wide rounded-md'
 		>
 			{label}
 		</button>
