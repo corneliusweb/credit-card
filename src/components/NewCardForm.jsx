@@ -29,6 +29,7 @@ const NewCardForm = ({ cardStates }) => {
 	} = cardStates;
 
 	const [formData, setFormData] = useState({});
+	const [errors, setErrors] = useState({});
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -37,7 +38,24 @@ const NewCardForm = ({ cardStates }) => {
 		const updated = { ...formData, [name]: value };
 		setFormData(updated);
 
-		// update the ui based on the changed input 
+		// validate just the changed input field
+		const singleFieldSchema = cardSchema.shape[name];
+		const result = singleFieldSchema.safeParse(value);
+
+		if (result.success) {
+			setErrors((prevErrors) => {
+				const newErrors = { ...prevErrors };
+				delete newErrors[name]; // delete resolved errors if they exists
+				return newErrors;
+			});
+		} else {
+			setErrors((prevErrors) => ({
+				...prevErrors,
+				[name]: result.error.issues[0].message,
+			}));
+		}
+
+		// update the ui based on the changed input
 		// converting to number here is essential for the formatting funcs in NewCard.jsx
 		if (name === 'cardHolder') setCardHolderName(value);
 		if (name === 'cardNumber') setCardNumber(Number.parseInt(value));
@@ -66,6 +84,9 @@ const NewCardForm = ({ cardStates }) => {
 						className='input-style'
 					/>
 				</div>
+				{errors.cardHolder && (
+					<p className='text-red-400 capitalize'>{errors.cardHolder}</p>
+				)}
 			</label>
 			<label className='label-style'>
 				Card Number
