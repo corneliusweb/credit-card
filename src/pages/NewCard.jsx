@@ -15,6 +15,7 @@ const NewCard = () => {
 	const [expiryYear, setExpiryYear] = useState(0);
 	const [cvv, setCvv] = useState(null);
 	const [isSuccessful, setIsSuccessful] = useState(false);
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	const formattedCardNumber = (number) => {
 		if (!number) return;
@@ -44,7 +45,8 @@ const NewCard = () => {
 		setExpiryMonth('');
 		setExpiryYear('');
 		setCvv(null);
-		setIsSuccessful(false)
+		setIsSuccessful(false);
+		setIsSubmitting(false)
 	};
 
 	return (
@@ -94,7 +96,7 @@ const NewCard = () => {
 				</div>
 			</div>
 			<div className='flex items-center justify-center'>
-				{!isSuccessful ? (
+				{!isSubmitting && !isSuccessful && (
 					<NewCardForm
 						cardStates={{
 							setCardHolderName,
@@ -103,9 +105,20 @@ const NewCard = () => {
 							setExpiryYear,
 							setCvv,
 							setIsSuccessful,
+							setIsSubmitting,
+							isSubmitting,
 						}}
 					/>
-				) : (
+				)}
+
+				{isSubmitting && (
+					<div className='mx-auto content-center h-50'>
+						<div className='w-20 h-20 mx-auto border-2 border-[hsl(278,94%,30%)] border-t-[hsl(249,99%,64%)] rounded-full animate-spin'></div>
+						<span className='block mx-auto'>Processing your card...</span>
+					</div>
+				)}
+
+				{isSuccessful && (
 					<SuccessMessage
 						icon={iconComplete}
 						resetDisplay={resetDisplay}

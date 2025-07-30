@@ -24,6 +24,8 @@ const NewCardForm = ({ cardStates }) => {
 		setExpiryYear,
 		setCvv,
 		setIsSuccessful,
+		setIsSubmitting,
+		isSubmitting,
 	} = cardStates;
 
 	const [formData, setFormData] = useState({});
@@ -62,14 +64,24 @@ const NewCardForm = ({ cardStates }) => {
 		if (name === 'cvv') setCvv(Number.parseInt(value));
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+		// prevent double submission
+		if (isSubmitting) return;
 
 		// validate formData on submit
 		const result = cardSchema.safeParse(formData);
-		if (!result.success) return; // prevent submission
-
-		setIsSuccessful(true); // submit because it passed
+		if (result.success) {
+			setIsSubmitting(true);
+			
+			await new Promise((resolve) => setTimeout(resolve, 1800));
+			
+			setIsSubmitting(false);
+			setIsSuccessful(true); // submit because it passed
+		} else {
+			setIsSubmitting(false);
+		}
 	};
 
 	return (
