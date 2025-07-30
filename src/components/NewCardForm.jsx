@@ -1,4 +1,28 @@
+import { useState } from 'react';
+import { z } from 'zod';
 import Button from './Button';
+
+const year = new Date().getFullYear().toString().slice(2);
+const currentYear = Number(year);
+
+const cardSchema = z.object({
+	cardNumber: z
+		.string()
+		.length(16, 'Card number must be exactly 16 digits')
+		.regex(/^\d+$/, 'Wrong format, numbers only.'),
+	cardHolder: z
+		.string()
+		.max(25, 'Name is too long')
+		.regex(/^[A-Za-z\s]+$/, 'Name must contain only letters and spaces'),
+	expiryMonth: z
+		.string()
+		.regex(/^(0[1-9]|1[0-2])$/, 'Month must be between 01 and 12'),
+	expiryYear: z
+		.number()
+		.min(currentYear, 'Card has expired')
+		.regex(/^\d{2}$/, 'Year must be two digits'),
+	cvv: z.string().regex(/^\d{3}$/, 'CVV must be 3 digits'),
+});
 
 const NewCardForm = ({
 	cardStates: {
@@ -46,7 +70,7 @@ const NewCardForm = ({
 		<form onSubmit={handleSubmit} className='max-w-[480px] p-3 sm:p-0'>
 			<label className='label-style'>
 				Card Holder Name
-				<div class='gradient-border'>
+				<div className='gradient-border'>
 					<input
 						type='text'
 						name='fullname'
@@ -60,7 +84,7 @@ const NewCardForm = ({
 			</label>
 			<label className='label-style'>
 				Card Number
-				<div class='gradient-border'>
+				<div className='gradient-border'>
 					<input
 						type='text'
 						name='card-number'
@@ -78,7 +102,7 @@ const NewCardForm = ({
 					<legend className='uppercase text-sm font-semibold tracking-wider'>
 						Exp. Date (MM / YY)
 					</legend>
-					<div class='gradient-border'>
+					<div className='gradient-border'>
 						<input
 							type='text'
 							name='expiry-month'
@@ -90,7 +114,7 @@ const NewCardForm = ({
 							className='flex-input-style'
 						/>
 					</div>
-					<div class='gradient-border'>
+					<div className='gradient-border'>
 						<input
 							type='text'
 							name='expiry-year'
@@ -106,7 +130,7 @@ const NewCardForm = ({
 
 				<label className='label-style mb-0 grow'>
 					Cvv
-					<div class='gradient-border'>
+					<div className='gradient-border'>
 						<input
 							type='text'
 							name='cvv'
