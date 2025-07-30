@@ -64,7 +64,12 @@ const NewCardForm = ({ cardStates }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		setIsSuccessful(true);
+
+		// validate formData on submit
+		const result = cardSchema.safeParse(formData);
+		if (!result.success) return; // prevent submission
+
+		setIsSuccessful(true); // submit because it passed
 	};
 
 	return (
