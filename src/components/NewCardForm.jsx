@@ -133,7 +133,7 @@ const NewCardForm = ({ cardStates }) => {
 
 			<div className='flex justify-between mb-8 gap-4'>
 				<fieldset
-					className={`flex gap-2 w-1/2 ${
+					className={`flex gap-2 w-1/2 basis-[170px] shrink-0 ${
 						errors.expiryMonth || errors.expiryYear ? 'relative mb-2' : ''
 					}`}
 				>
@@ -198,13 +198,12 @@ const NewCardForm = ({ cardStates }) => {
 							maxLength={3}
 							minLength={3}
 							onChange={handleChange}
-							className='flex-input-style block py-2 w-full'
+							className='flex-input-style w-full'
 						/>
 					</div>
 					{errors.cvv && (
 						<p className='error-style absolute -bottom-4.5'>
-							{' '}
-							{errors.cvv}{' '}
+							{errors.cvv}
 						</p>
 					)}
 				</label>
