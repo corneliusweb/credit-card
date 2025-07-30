@@ -2,9 +2,6 @@ import { useState } from 'react';
 import { z } from 'zod';
 import Button from './Button';
 
-const year = new Date().getFullYear().toString().slice(2);
-const currentYear = Number(year);
-
 const cardSchema = z.object({
 	cardNumber: z
 		.string()
@@ -17,48 +14,36 @@ const cardSchema = z.object({
 	expiryMonth: z
 		.string()
 		.regex(/^(0[1-9]|1[0-2])$/, 'Month must be between 01 and 12'),
-	expiryYear: z
-		.number()
-		.min(currentYear, 'Card has expired')
-		.regex(/^\d{2}$/, 'Year must be two digits'),
+	expiryYear: z.string().regex(/^\d{2}$/, 'Year must be two digits'),
 	cvv: z.string().regex(/^\d{3}$/, 'CVV must be 3 digits'),
 });
 
-const NewCardForm = ({
-	cardStates: {
+const NewCardForm = ({ cardStates }) => {
+	const {
 		setCardHolderName,
 		setCardNumber,
 		setExpiryMonth,
 		setExpiryYear,
 		setCvv,
 		setIsSuccessful,
-	},
-}) => {
-	const handleMonthChange = (e) => {
-		let value = Number.parseInt(e.target.value);
-		// prevent user from typing invalid month
-		if (value < 1 && value) value = 1;
-		if (value > 12) value = 12;
+	} = cardStates;
 
-		setExpiryMonth(value);
-	};
+	const [formData, setFormData] = useState({});
 
-	const handleYearChange = (e) => {
-		let value = Number.parseInt(e.target.value);
-		if (value < 1 && value) value = 1;
+	const handleChange = (e) => {
+		const { name, value } = e.target;
 
-		setExpiryYear(value);
-	};
+		// construct new key:value pair or update if it exists
+		const updated = { ...formData, [name]: value };
+		setFormData(updated);
 
-	const handleCardNumberChange = (e) => {
-		const cardNumber = Number.parseInt(e.target.value);
-		setCardNumber(cardNumber);
-	};
-
-	const handleCvvChange = (e) => {
-		let value = Number.parseInt(e.target.value);
-		if (value < 1 && value) value = 1;
-		setCvv(value);
+		// update the ui based on the changed input 
+		// converting to number here is essential for the formatting funcs in NewCard.jsx
+		if (name === 'cardHolder') setCardHolderName(value);
+		if (name === 'cardNumber') setCardNumber(Number.parseInt(value));
+		if (name === 'expiryMonth') setExpiryMonth(Number.parseInt(value));
+		if (name === 'expiryYear') setExpiryYear(Number.parseInt(value));
+		if (name === 'cvv') setCvv(Number.parseInt(value));
 	};
 
 	const handleSubmit = (e) => {
@@ -73,11 +58,11 @@ const NewCardForm = ({
 				<div className='gradient-border'>
 					<input
 						type='text'
-						name='fullname'
+						name='cardHolder'
 						placeholder='e.g Jane Appleseed'
 						required
 						autoFocus={true}
-						onChange={(e) => setCardHolderName(e.target.value)}
+						onChange={handleChange}
 						className='input-style'
 					/>
 				</div>
@@ -87,12 +72,12 @@ const NewCardForm = ({
 				<div className='gradient-border'>
 					<input
 						type='text'
-						name='card-number'
+						name='cardNumber'
 						placeholder='e.g 1234 5678 9123 0000'
 						required
 						maxLength={16}
 						minLength={16}
-						onChange={handleCardNumberChange}
+						onChange={handleChange}
 						className='input-style'
 					/>
 				</div>
@@ -105,24 +90,24 @@ const NewCardForm = ({
 					<div className='gradient-border'>
 						<input
 							type='text'
-							name='expiry-month'
+							name='expiryMonth'
 							placeholder='MM'
 							required
 							maxLength={2}
 							minLength={1}
-							onChange={handleMonthChange}
+							onChange={handleChange}
 							className='flex-input-style'
 						/>
 					</div>
 					<div className='gradient-border'>
 						<input
 							type='text'
-							name='expiry-year'
+							name='expiryYear'
 							placeholder='YY'
 							required
 							maxLength={2}
 							minLength={2}
-							onChange={handleYearChange}
+							onChange={handleChange}
 							className='flex-input-style'
 						/>
 					</div>
@@ -138,7 +123,7 @@ const NewCardForm = ({
 							required
 							maxLength={3}
 							minLength={3}
-							onChange={handleCvvChange}
+							onChange={handleChange}
 							className='flex-input-style block py-2 w-full'
 						/>
 					</div>
