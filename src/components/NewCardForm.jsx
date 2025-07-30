@@ -142,9 +142,7 @@ const NewCardForm = ({ cardStates }) => {
 					</legend>
 					<div
 						className={
-							errors.expiryMonth || errors.expiryYear
-								? 'invalid-style'
-								: 'gradient-border'
+							errors.expiryMonth ? 'invalid-style' : 'gradient-border'
 						}
 					>
 						<input
@@ -158,7 +156,11 @@ const NewCardForm = ({ cardStates }) => {
 							className='flex-input-style'
 						/>
 					</div>
-					<div className='gradient-border'>
+					<div
+						className={
+							errors.expiryYear ? 'invalid-style' : 'gradient-border'
+						}
+					>
 						<input
 							type='text'
 							name='expiryYear'
