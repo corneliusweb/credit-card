@@ -71,7 +71,11 @@ const NewCardForm = ({ cardStates }) => {
 		<form onSubmit={handleSubmit} className='max-w-[480px] p-3 sm:p-0'>
 			<label className='label-style'>
 				Card Holder Name
-				<div className='gradient-border'>
+				<div
+					className={
+						errors.cardHolder ? 'invalid-style' : 'gradient-border'
+					}
+				>
 					<input
 						type='text'
 						name='cardHolder'
@@ -89,7 +93,11 @@ const NewCardForm = ({ cardStates }) => {
 			</label>
 			<label className='label-style'>
 				Card Number
-				<div className='gradient-border'>
+				<div
+					className={
+						errors.cardNumber ? 'invalid-style' : 'gradient-border'
+					}
+				>
 					<input
 						type='text'
 						name='cardNumber'
@@ -105,6 +113,7 @@ const NewCardForm = ({ cardStates }) => {
 					<p className='error-style'>{errors.cardNumber}</p>
 				)}
 			</label>
+
 			<div className='flex justify-between mb-8 gap-4'>
 				<fieldset
 					className={`flex gap-2 w-1/2 ${
@@ -114,7 +123,13 @@ const NewCardForm = ({ cardStates }) => {
 					<legend className='uppercase text-sm font-semibold tracking-wider'>
 						Exp. Date (MM / YY)
 					</legend>
-					<div className='gradient-border'>
+					<div
+						className={
+							errors.expiryMonth || errors.expiryYear
+								? 'invalid-style'
+								: 'gradient-border'
+						}
+					>
 						<input
 							type='text'
 							name='expiryMonth'
@@ -147,9 +162,15 @@ const NewCardForm = ({ cardStates }) => {
 					)}
 				</fieldset>
 
-				<label className='label-style mb-0 grow'>
+				<label
+					className={`label-style mb-0 grow ${
+						errors.cvv ? 'relative mb-2' : ''
+					}`}
+				>
 					Cvv
-					<div className='gradient-border'>
+					<div
+						className={errors.cvv ? 'invalid-style' : 'gradient-border'}
+					>
 						<input
 							type='text'
 							name='cvv'
@@ -161,7 +182,12 @@ const NewCardForm = ({ cardStates }) => {
 							className='flex-input-style block py-2 w-full'
 						/>
 					</div>
-					{errors.cvv && <p className='error-style'> {errors.cvv} </p>}
+					{errors.cvv && (
+						<p className='error-style absolute -bottom-4.5'>
+							{' '}
+							{errors.cvv}{' '}
+						</p>
+					)}
 				</label>
 			</div>
 			<Button type={'submit'} label={'Confirm'} />
