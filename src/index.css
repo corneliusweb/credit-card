@@ -45,4 +45,8 @@
 		has-[:focus]:has-[:not(:user-invalid)]:from-[hsl(249,99%,64%)]
 		has-[:focus]:has-[:not(:user-invalid)]:to-[hsl(278,94%,30%)];
 	}
+
+	.error-style {
+		@apply text-red-400 text-sm normal-case tracking-normal font-normal
+	}
 }
