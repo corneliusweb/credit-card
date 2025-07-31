@@ -157,7 +157,7 @@ const NewCardForm = ({ cardStates }) => {
 			<div className='flex justify-between mb-8 gap-4'>
 				<fieldset
 					className={`flex gap-2 w-1/2 basis-[170px] shrink-0 ${
-						errors.expiryMonth || errors.expiryYear ? 'relative mb-2' : ''
+						errors.expiryMonth || errors.expiryYear ? 'relative' : ''
 					}`}
 				>
 					<legend className='uppercase text-sm font-semibold tracking-wider'>
@@ -206,7 +206,7 @@ const NewCardForm = ({ cardStates }) => {
 
 				<label
 					className={`label-style mb-0 grow ${
-						errors.cvv ? 'relative mb-2' : ''
+						errors.cvv ? 'relative' : ''
 					}`}
 				>
 					Cvv
