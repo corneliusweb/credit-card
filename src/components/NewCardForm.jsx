@@ -11,7 +11,16 @@ const cardSchema = z.object({
 	cardHolder: z
 		.string()
 		.regex(/^[A-Za-z\s]+$/, 'Name must contain only letters and spaces')
-		.max(17, 'Name too long, please use only your firstName'),
+		.max(17, 'Name too long, please use only your firstName')
+		.transform((val) => {
+			return val
+				.trim()
+				.split(' ')
+				.map(
+					(word) => word.at(0).toUpperCase() + word.slice(1).toLowerCase()
+				)
+				.join(' ');
+		}),
 	expiryMonth: z
 		.string()
 		.min(1, "Month can't be blank")
