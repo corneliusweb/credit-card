@@ -6,14 +6,27 @@ const cardSchema = z.object({
 	cardNumber: z
 		.string()
 		.regex(/^\d+$/, 'Wrong format, numbers only.')
-		.length(16, 'Card number must be exactly 16 digits'),
+		.length(16, 'Card number must be exactly 16 digits')
+		.transform((val) => parseInt(val, 10)),
 	cardHolder: z
 		.string()
 		.regex(/^[A-Za-z\s]+$/, 'Name must contain only letters and spaces')
 		.max(17, 'Name too long, please use only your firstName'),
-	expiryMonth: z.string().regex(/^(0[1-9]|1[0-2])$/, "Month can't be blank"),
-	expiryYear: z.string().regex(/^\d{2}$/, "Year can't be blank"),
-	cvv: z.string().regex(/^\d{3}$/, 'CVV must be 3 digits'),
+	expiryMonth: z
+		.string()
+		.min(1, "Month can't be blank")
+		.regex(/^(0[1-9]|1[0-2])$/, 'Invalid Month')
+		.transform((val) => parseInt(val, 10)),
+	expiryYear: z
+		.string()
+		.min(1, "Year can't be blank")
+		.regex(/^\d{2}$/, 'Invalid year')
+		.transform((val) => parseInt(val, 10)),
+	cvv: z
+		.string()
+		.min(1, "Cvv can't be blank")
+		.regex(/^\d{3}$/, 'CVV must be 3 digits')
+		.transform((val) => parseInt(val, 10)),
 });
 
 const NewCardForm = ({ cardStates }) => {
@@ -74,11 +87,12 @@ const NewCardForm = ({ cardStates }) => {
 		const result = cardSchema.safeParse(formData);
 		if (result.success) {
 			setIsSubmitting(true);
-			
+
 			await new Promise((resolve) => setTimeout(resolve, 1800));
-			
+
 			setIsSubmitting(false);
 			setIsSuccessful(true); // submit because it passed
+			console.log(result.data);
 		} else {
 			setIsSubmitting(false);
 		}
