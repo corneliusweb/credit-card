@@ -1,10 +1,6 @@
-import NewCard from "./pages/NewCard"
+import NewCard from './pages/NewCard';
 
 const App = () => {
-  return (
-     <div>
-        <NewCard />
-    </div>
-  )
-}
-export default App
+	return <NewCard />;
+};
+export default App;
