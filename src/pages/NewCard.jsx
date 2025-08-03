@@ -1,12 +1,7 @@
 import { useState } from 'react';
 import NewCardForm from '../components/NewCardForm';
 import SuccessMessage from '../components/SuccessMessage';
-import {
-	bgCardBack,
-	bgCardFront,
-	cardLogo,
-	iconComplete,
-} from '../assets/images';
+import { bgCardBack, bgCardFront, cardLogo } from '../assets/images';
 
 const NewCard = () => {
 	const [cardHolderName, setCardHolderName] = useState('');
@@ -46,7 +41,7 @@ const NewCard = () => {
 		setExpiryYear(0);
 		setCvv(null);
 		setIsSuccessful(false);
-		setIsSubmitting(false)
+		setIsSubmitting(false);
 	};
 
 	return (
@@ -118,12 +113,7 @@ const NewCard = () => {
 					</div>
 				)}
 
-				{isSuccessful && (
-					<SuccessMessage
-						icon={iconComplete}
-						resetDisplay={resetDisplay}
-					/>
-				)}
+				{isSuccessful && <SuccessMessage resetDisplay={resetDisplay} />}
 			</div>
 		</main>
 	);

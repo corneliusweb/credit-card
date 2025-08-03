@@ -1,9 +1,10 @@
 import Button from './Button';
+import { iconComplete } from '../assets/images';
 
-const SuccessMessage = ({ icon, resetDisplay }) => {
+const SuccessMessage = ({ resetDisplay }) => {
 	return (
 		<div className='text-center w-[360px] p-3 sm:p-0 grid gap-3'>
-			<img src={icon} alt='success icon' className='mx-auto mb-4' />
+			<img src={iconComplete} alt='success icon' className='mx-auto mb-4' />
 			<h2 className='text-purple uppercase tracking-widest text-2xl leading-9'>
 				Thank you!
 			</h2>
