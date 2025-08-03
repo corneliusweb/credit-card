@@ -11,10 +11,10 @@
 
 @theme {
 	--color-white: hsl(0, 100%, 100%);
-	--color-purple: hsl(278, 68%, 11%);
+	--color-purple-950: hsl(278, 68%, 11%);
 	--color-gray-400: hsl(212, 12%, 71%)
 	--color-gray-200: hsl(270, 3%, 87%)
-	--color-red: hsl(0, 100%, 66%);
+	--color-red-400: hsl(0, 100%, 66%);
 	--bg-desktop: url('./assets/images/bg-main-desktop.png');
 	--bg-mobile: url('./assets/images/bg-main-mobile.png');
 }
@@ -31,12 +31,8 @@
 		@apply rounded-md border-2 border-gray-200 block w-full h-full p-2 outline-0 font-normal text-base bg-white focus:border-0
 	}
 
-	.flex-input-style {
-		@apply rounded-md border-2 p-2 border-gray-200 block outline-0 h-full w-full text-base font-normal bg-white focus:border-0
-	}
-
 	.label-style {
-		@apply text-purple uppercase mb-5 font-semibold block text-sm tracking-widest;
+		@apply text-purple-950 uppercase mb-5 font-semibold block text-sm tracking-widest;
 	}
 
 	.gradient-border {

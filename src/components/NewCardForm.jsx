@@ -23,17 +23,17 @@ const cardSchema = z.object({
 		}),
 	expiryMonth: z
 		.string()
-		.min(1, "Month can't be blank")
+		.min(1, "Can't be blank")
 		.regex(/^(0[1-9]|1[0-2])$/, 'Invalid Month')
 		.transform((val) => parseInt(val, 10)),
 	expiryYear: z
 		.string()
-		.min(1, "Year can't be blank")
+		.min(1, "Can't be blank")
 		.regex(/^\d{2}$/, 'Invalid year')
 		.transform((val) => parseInt(val, 10)),
 	cvv: z
 		.string()
-		.min(1, "Cvv can't be blank")
+		.min(1, "Can't be blank")
 		.regex(/^\d{3}$/, 'CVV must be 3 digits')
 		.transform((val) => parseInt(val, 10)),
 });
@@ -176,7 +176,7 @@ const NewCardForm = ({ cardStates }) => {
 							maxLength={2}
 							minLength={1}
 							onChange={handleChange}
-							className='flex-input-style'
+							className='input-style'
 						/>
 					</div>
 					<div
@@ -192,7 +192,7 @@ const NewCardForm = ({ cardStates }) => {
 							maxLength={2}
 							minLength={2}
 							onChange={handleChange}
-							className='flex-input-style'
+							className='input-style'
 						/>
 					</div>
 					{/* display error when either of month & year is true */}
@@ -221,7 +221,7 @@ const NewCardForm = ({ cardStates }) => {
 							maxLength={3}
 							minLength={3}
 							onChange={handleChange}
-							className='flex-input-style w-full'
+							className='input-style w-full'
 						/>
 					</div>
 					{errors.cvv && (

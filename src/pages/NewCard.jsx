@@ -50,7 +50,7 @@ const NewCard = () => {
 	};
 
 	return (
-		<main className='grid gap-22 pb-12 sm:gap-38 xl:gap-0 xl:grid-cols-2'>
+		<main className='grid gap-22 pb-12 sm:gap-38 xl:gap-0 xl:grid-cols-2 max-w-[1440px]'>
 			<div
 				className={`bg-[image:var(--bg-mobile)] bg-no-repeat bg-cover relative flex flex-col-reverse items-end pr-2 justify-center h-60 sm:pr-0 sm:h-70 sm:items-center xl:w-[483px] xl:h-screen xl:bg-[image:var(--bg-desktop)]`}
 			>
