@@ -41,9 +41,9 @@ const NewCard = () => {
 
 	const resetDisplay = () => {
 		setCardHolderName('');
-		setCardNumber('');
-		setExpiryMonth('');
-		setExpiryYear('');
+		setCardNumber(0);
+		setExpiryMonth(0);
+		setExpiryYear(0);
 		setCvv(null);
 		setIsSuccessful(false);
 		setIsSubmitting(false)

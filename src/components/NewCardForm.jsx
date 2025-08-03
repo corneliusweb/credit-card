@@ -5,11 +5,13 @@ import Button from './Button';
 const cardSchema = z.object({
 	cardNumber: z
 		.string()
+		.min(1, 'Card number is required')
 		.regex(/^\d+$/, 'Wrong format, numbers only.')
 		.length(16, 'Card number must be exactly 16 digits')
 		.transform((val) => parseInt(val, 10)),
 	cardHolder: z
 		.string()
+		.min(1, 'Name is required')
 		.regex(/^[A-Za-z\s]+$/, 'Name must contain only letters and spaces')
 		.max(17, 'Name too long, please use only your firstName')
 		.transform((val) => {
@@ -101,7 +103,6 @@ const NewCardForm = ({ cardStates }) => {
 
 			setIsSubmitting(false);
 			setIsSuccessful(true); // submit because it passed
-			console.log(result.data);
 		} else {
 			setIsSubmitting(false);
 		}

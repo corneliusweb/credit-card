@@ -28,7 +28,7 @@
 
 @layer components {
 	.input-style {
-		@apply rounded-md border-2 border-gray-200 block w-full h-full p-2 outline-0 font-normal text-base bg-white focus:border-0
+		@apply rounded-md border-2 border-gray-200 block w-full h-full p-2 outline-0 font-normal text-base bg-white focus:border-0 caret-purple-950
 	}
 
 	.label-style {
