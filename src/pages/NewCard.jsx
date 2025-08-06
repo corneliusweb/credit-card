@@ -45,7 +45,7 @@ const NewCard = () => {
 	};
 
 	return (
-		<main className='grid gap-22 pb-12 sm:gap-38 xl:gap-0 xl:grid-cols-2 max-w-[1440px]'>
+		<main className='grid gap-22 pb-12 max-w-[1440px] sm:pb-0 sm:gap-38 xl:gap-0 xl:grid-cols-2'>
 			<div
 				className={`bg-[image:var(--bg-mobile)] bg-no-repeat bg-cover relative flex flex-col-reverse items-end pr-2 justify-center h-60 sm:pr-0 sm:h-70 sm:items-center xl:w-[483px] xl:h-screen xl:bg-[image:var(--bg-desktop)]`}
 			>
@@ -59,14 +59,14 @@ const NewCard = () => {
 						className='w-[58px] sm:w-[78px] xl:w-[88px]'
 					/>
 
-					<div className='flex flex-col flex-nowrap justify-between gap-3 sm:gap-5 xl:gap-7 overflow-hidden w-full'>
+					<div className='flex flex-col flex-nowrap justify-between gap-3 overflow-hidden w-full sm:gap-5 xl:gap-7'>
 						<p className='text-white text-xl tracking-wide sm:tracking-widest sm:text-2xl xl:tracking-widest'>
 							{!cardNumber
 								? '0000 0000 0000 0000'
 								: formattedCardNumber(cardNumber)}
 						</p>
 
-						<div className='flex justify-between text-gray-300 text-sm tracking-widest '>
+						<div className='flex justify-between text-gray-300 text-sm tracking-widest'>
 							<span className='uppercase'>
 								{!cardHolderName ? 'Jane Appleseed' : cardHolderName}
 							</span>
